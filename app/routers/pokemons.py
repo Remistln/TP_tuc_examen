@@ -1,9 +1,9 @@
 from typing import List
 from sqlalchemy.orm import Session
-from fastapi import APIRouter,  Depends
+from fastapi import APIRouter, Depends
 from app import actions, schemas
 from app.utils.utils import get_db
-from app.utils.pokeapi import get_random_pokemons
+from app.utils import pokeapi
 
 router = APIRouter()
 
@@ -22,4 +22,12 @@ def get_3_random_pokemons():
     """
         Return 3 random pokemons
     """
-    return get_random_pokemons(3)
+    return pokeapi.get_random_pokemons(3)
+
+@router.get("/battle/{pokemon_a}/{pokemon_b}")
+def get_pokemons(pokemon_a: int, pokemon_b: int, database: Session = Depends(get_db)):
+    """
+        Return the pokemon who win
+    """
+    return pokeapi.battle_pokemon(pokemon_a, pokemon_b)
+
