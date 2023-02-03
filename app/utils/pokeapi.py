@@ -1,4 +1,5 @@
 import requests
+import random
 
 base_url = "https://pokeapi.co/api/v2"
 
@@ -13,7 +14,7 @@ def get_pokemon_stats(api_id):
     """
         Get pokemon stats from the API pokeapi
     """
-    return False
+    return get_pokemon_data(api_id)['stats']
 
 def get_pokemon_data(api_id):
     """
@@ -36,3 +37,17 @@ def battle_compare_stats(first_pokemon_stats, second_pokemon_stats):
     """
         Compare given stat between two pokemons
     """
+
+def get_random_pokemons(amount):
+    """
+        Return 3 random pokemon with data
+    """
+    randomPokeList = list()
+    randomPokemonId = random.sample(range(1,1008), amount)
+    for id in randomPokemonId:
+        randomPoke = dict()
+        randomPoke['name'] = get_pokemon_name(id)
+        randomPoke['stats'] = get_pokemon_stats(id)
+        randomPokeList.append(randomPoke)
+    
+    return randomPokeList
