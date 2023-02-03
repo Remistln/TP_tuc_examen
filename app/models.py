@@ -1,3 +1,6 @@
+"""
+    Classes to store the database object
+"""
 from sqlalchemy import Column, ForeignKey, Integer, String, Date
 from sqlalchemy.orm import relationship
 from .sqlite import Base
@@ -7,6 +10,7 @@ class Trainer(Base):
     """
         Class representing a pokemon trainer
     """
+    # pylint: disable=too-few-public-methods
     __tablename__ = "trainers"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -21,8 +25,9 @@ class Pokemon(Base):
         Class representing a pokemon
         Parameters:
             api_id (int): id from the pokeapi
-            name (str): Populate with the pokeapi data 
+            name (str): Populate with the pokeapi data
     """
+    # pylint: disable=too-few-public-methods
     __tablename__ = "pokemons"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -37,6 +42,7 @@ class Item(Base):
     """
         Class representing a pokemon trainer
     """
+    # pylint: disable=too-few-public-methods
     __tablename__ = "items"
 
     id = Column(Integer, primary_key=True, index=True)
