@@ -1,3 +1,6 @@
+"""
+    Functions to handle pokemons
+"""
 from typing import List
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends
@@ -18,9 +21,8 @@ def get_pokemons(skip: int = 0, limit: int = 100, database: Session = Depends(ge
     return pokemons
 
 @router.get("/battle/{pokemon_a}/{pokemon_b}")
-def get_pokemons(pokemon_a: int, pokemon_b: int, database: Session = Depends(get_db)):
+def get_battle_result(pokemon_a: int, pokemon_b: int):
     """
         Return the pokemon who win
     """
     return pokeapi.battle_pokemon(pokemon_a, pokemon_b)
-
