@@ -1,6 +1,7 @@
 """
     Classes to store the database object
 """
+# pylint: disable=too-few-public-methods
 from sqlalchemy import Column, ForeignKey, Integer, String, Date
 from sqlalchemy.orm import relationship
 from .sqlite import Base
@@ -10,7 +11,6 @@ class Trainer(Base):
     """
         Class representing a pokemon trainer
     """
-    # pylint: disable=too-few-public-methods
     __tablename__ = "trainers"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -27,7 +27,6 @@ class Pokemon(Base):
             api_id (int): id from the pokeapi
             name (str): Populate with the pokeapi data
     """
-    # pylint: disable=too-few-public-methods
     __tablename__ = "pokemons"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -42,7 +41,6 @@ class Item(Base):
     """
         Class representing a pokemon trainer
     """
-    # pylint: disable=too-few-public-methods
     __tablename__ = "items"
 
     id = Column(Integer, primary_key=True, index=True)
