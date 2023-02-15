@@ -13,3 +13,17 @@
 - Modifications du code pour remplir les contraintes de lint
 - Création de la configuration de locust avec rédaction d'un sénario à l'aide de locust
 - Création de tests unitaires dont quelques uns mockés pour atteindre 85% de lignes couvertes
+
+# Coverage :
+
+On génère les datas sur le coverage avec
+
+```
+python -m coverage run -m unittest
+```
+
+Puis, on les affiches avec la commande
+
+```
+python -m coverage report
+```
