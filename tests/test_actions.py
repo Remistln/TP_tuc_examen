@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 from unittest.mock import Mock
 from sqlalchemy.orm import Session
 from app.actions import *
-from app.models import Trainer, Item
+from app.models import *
 import datetime
 
 
@@ -53,4 +53,18 @@ class TestAction(unittest.TestCase):
         
         self.assertEqual(result, fake_item)
 
-    
+    def test_get_pokemons(self) : 
+        fake_pokemon = Pokemon(id=1, api_id = 1, name="Mock Pokemon", custom_name = "Mock custom")
+        fake_session.query.return_value.offset.return_value.limit.return_value.all.return_value = fake_pokemon
+        
+        result = get_pokemons(fake_session, 1)
+        
+        self.assertEqual(result, fake_pokemon)
+
+    def test_get_pokemon(self) : 
+        fake_pokemon = Pokemon(id=1, api_id = 1, name="Mock Pokemon", custom_name = "Mock custom")
+        fake_session.query.return_value.filter.return_value.first.return_value = fake_pokemon
+        
+        result = get_pokemon(fake_session, 1)
+        
+        self.assertEqual(result, fake_pokemon)
